@@ -16,12 +16,19 @@ function App() {
     {id: 4, name: 'Playlist Song', artist: 'Artist D', album: 'Album D'},
     {id: 5, name: 'Another Song', artist: 'Artist E', album: 'Album E'},
   ]);
+  const addTrack = (track: { id: number; name: string; artist: string; album: string}) => {
+    const alreadySaved = playlistTracks.some(savedTrack => savedTrack.id === track.id);
+    if (alreadySaved) {
+      return;
+    }
+    setPlaylistTracks([...playlistTracks, track]);
+  };
   return (
     <div>
       <Heading />
       <SearchBar />
       <section className='playlistMakerSection'>
-        <SearchResults tracks={searchResults}/> 
+        <SearchResults tracks={searchResults} onAdd={addTrack}/> 
         <Playlist 
           playlistName={playlistName}
           playlistTracks={playlistTracks}
