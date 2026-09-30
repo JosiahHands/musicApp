@@ -6,7 +6,8 @@ function Playlist(props: {
     playlistName: string;
     playlistTracks: { id: number; name: string; artist: string; album: string; uri: string}[];
     onNameChange: (name: string) => void;
-    onRemove?: (track: { id: number; name: string; artist: string; album: string }) => void;
+    onRemove?: (track: { id: number; name: string; artist: string; album: string; uri: string}) => void;
+    onReset?: () => void;
 }) {
     function handleNameChange(event: React.ChangeEvent<HTMLInputElement>) {
         props.onNameChange(event.target.value)
@@ -14,6 +15,7 @@ function Playlist(props: {
     const savePlaylist = () => {
         const trackURIs = props.playlistTracks.map(track => track.uri);
         Spotify.savePlaylist(props.playlistName, trackURIs);
+        props.onReset?.();
     }
     return (
         <div className='playlist' >
