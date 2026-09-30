@@ -1,7 +1,7 @@
 import TrackList from '../trackList/tracklist';
 import './searchResults.css'
-function SearchResults(props: { tracks: { id: number; name: string; artist: string; album: string;}[] 
-    onAdd: (track: {id: number; name: string; artist: string; album: string}) => void;
+function SearchResults(props: { tracks: { id: number; name: string; artist: string; album: string; uri: string}[] ;
+    onAdd: (track: {id: number; name: string; artist: string; album: string; uri: string}) => void;
     
 }) {
     const trackListProps = {
