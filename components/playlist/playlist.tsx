@@ -14,7 +14,7 @@ function Playlist(props: {
         <div className='playlist' >
             <h3>playlist</h3>
             <div>
-                <input value="new Playlist"/>
+                <input value={props.playlistName} onChange={handleNameChange}/>
                 <TrackList tracks={props.playlistTracks}/>
                 <button>save to spotify</button>
             </div>
