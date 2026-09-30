@@ -23,6 +23,9 @@ function App() {
     }
     setPlaylistTracks([...playlistTracks, track]);
   };
+  const removeTrack = (track: { id: number; name: string; artist: string; album: string}) => {
+    setPlaylistTracks(playlistTracks.filter(savedTrack => savedTrack.id !== track.id));
+  };
   return (
     <div>
       <Heading />
@@ -33,6 +36,7 @@ function App() {
           playlistName={playlistName}
           playlistTracks={playlistTracks}
           onNameChange={setPlaylistName}
+          onRemove={removeTrack}
         />
       </section>
     </div>

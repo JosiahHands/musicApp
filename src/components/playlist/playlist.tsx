@@ -6,6 +6,7 @@ function Playlist(props: {
     playlistName: string;
     playlistTracks: { id: number; name: string; artist: string; album: string}[];
     onNameChange: (name: string) => void;
+    onRemove?: (track: { id: number; name: string; artist: string; album: string }) => void;
 }) {
     function handleNameChange(event: React.ChangeEvent<HTMLInputElement>) {
         props.onNameChange(event.target.value)
@@ -15,7 +16,7 @@ function Playlist(props: {
             <h3>playlist</h3>
             <div>
                 <input value={props.playlistName} onChange={handleNameChange}/>
-                <TrackList tracks={props.playlistTracks}/>
+                <TrackList tracks={props.playlistTracks} onRemove={props.onRemove}/>
                 <button>save to spotify</button>
             </div>
         </div>
